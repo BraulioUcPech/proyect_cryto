@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -12,7 +12,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite('resources/css/app.css')
 
-    <!-- <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2"></script>  Asegúrate de que la ruta a face-api.min.js sea correcta si decides usar una versión local -->
+    <!--   Asegúrate de que la ruta a face-api.min.js sea correcta si decides usar una versión local -->
+
     <script defer src="{{ asset('js/face-api.min.js') }}"></script>
 </head>
 
@@ -39,9 +40,11 @@
             <div class="lg:w-2/3 bg-white p-8 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-semibold text-center text-gray-800 mb-8">Registro Facial</h2>
                 <div class="flex flex-col items-center">
-                    <video id="inputVideo" autoplay muted playsinline class="rounded-lg mb-4"></video>
-                    <canvas id="overlay" class="rounded-lg"></canvas>
-                    <a href="/dashboard">
+                    <div style="position: relative">
+                        <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
+                        <canvas id="overlay">
+                    </div>
+                    <a href="/">
                         <button class="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                             Iniciar Registro </button>
                     </a>
@@ -123,7 +126,7 @@
 
     </footer>
 
-    <script src="js/script_webcam.js"></script>
+    <script src="{{ asset('js/script_webcam.js') }}"></script>
 </body>
 
 </html>

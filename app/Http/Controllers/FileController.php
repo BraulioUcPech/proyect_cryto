@@ -17,6 +17,9 @@ class FileController extends Controller
         $validatedData = $request->validate([
             'file' => 'required|file|max:10240',
         ]);
+        $fileInstance = $request->file('file');
+        $fileContent = file_get_contents($fileInstance->getRealPath());
+
 
         if (!$request->hasFile('file')) {
             return redirect()->back()->with('error', 'No se ha subido ningún archivo.');
@@ -47,13 +50,15 @@ class FileController extends Controller
 
         $fileSize = Storage::disk('public')->size("files/{$encryptedFileName}");
 
+
         $file = new File;
         $file->user_id = auth()->id();
-        $file->name = $originalFileName;
-        $file->file_name = $encryptedFileName;
-        $file->encrypted_data = $encryptedContent;
+        $file->name = $fileInstance->getClientOriginalName();
+        $file->file_name = 'enc_' . $file->name;
+        $file->file_size = $fileInstance->getSize();
+        $file->encrypted_data = base64_encode($path);
         $file->iv = base64_encode($iv);
-        $file->file_size = $fileSize;
+        $file->file_type = $fileInstance->getClientMimeType();
         $file->save();
 
         return redirect()->back()->with('success', 'Archivo subido y encriptado correctamente.');
@@ -83,7 +88,7 @@ class FileController extends Controller
         return response()->json($files);
     }
 
-    
+
     /*
     public function downloadEncrypted($id)
 {
