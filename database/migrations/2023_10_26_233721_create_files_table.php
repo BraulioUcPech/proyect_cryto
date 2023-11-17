@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,14 +13,13 @@ return new class extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('name'); // Asegúrate de que esta línea exista
-
-            $table->string('file_name');
-            $table->text('encrypted_data');
-            $table->text('iv'); // Agregar la columna iv aquí
-
+            $table->string('name')->nullable();
+            $table->string('file_name'); // Nombre del archivo encriptado
+            $table->bigInteger('file_size')->nullable();
+            $table->text('encrypted_data'); // Ruta del archivo encriptado
+            $table->text('iv'); // IV para desencriptar el archivo
+            $table->string('file_type')->nullable(); // Tipo de archivo (opcional)
             $table->timestamps();
-
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

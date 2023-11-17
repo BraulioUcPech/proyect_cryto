@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,32 +9,31 @@ use Illuminate\Mail\Attachment;
 
 class File extends Model
 {
-
-    protected $fillable = [
+    use HasFactory;
+    protected $fillable = [ 
         'user_id',
+        'name',
         'file_name',
+        'file_size',
         'encrypted_data',
         'iv',
-
+        'file_type',
     ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    // ...
 
     public function attachments()
     {
         return $this->hasMany(Attachment::class);
     }
-    public function files()
-    {
-        return $this->hasMany(File::class);
-    }
+
     public function attachments_count()
     {
         return $this->attachments()->count();
     }
-
-    use HasFactory;
 }
