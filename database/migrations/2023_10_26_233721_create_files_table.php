@@ -14,11 +14,11 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name')->nullable();
-            $table->string('file_name'); // Nombre del archivo encriptado
+            $table->string('file_name'); 
             $table->bigInteger('file_size')->nullable();
-            $table->text('encrypted_data'); // Ruta del archivo encriptado
-            $table->text('iv'); // IV para desencriptar el archivo
-            $table->string('file_type')->nullable(); // Tipo de archivo (opcional)
+            $table->text('encrypted_data');
+            $table->text('iv');
+            $table->string('file_type')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

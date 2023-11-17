@@ -121,8 +121,17 @@ export default function Login({ status, canResetPassword }) {
                     disabled={processing}
                 >
                     Log in
-                </motion.button>
-            </div>
+                        </motion.button>
+
+                    </div>
+                    <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => window.location.href='http://127.0.0.1:8000/verify-face'}
+                                className="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                            >
+                                Verify Face
+                            </motion.button>
                 </form>
             </motion.div>
         </GuestLayout>
