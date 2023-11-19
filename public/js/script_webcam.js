@@ -14,7 +14,8 @@ async function onPlay() {
     const canvas = document.getElementById("overlay");
 
     if (video.paused || video.ended || !faceapi.nets.ssdMobilenetv1.params) {
-        return setTimeout(() => onPlay());
+        requestAnimationFrame(onPlay); // Usar requestAnimationFrame para reintentar en el próximo frame
+        return;
     }
 
     const fullFaceDescriptions = await faceapi
@@ -29,20 +30,18 @@ async function onPlay() {
     faceapi.draw.drawFaceLandmarks(canvas, resizedResults);
     faceapi.draw.drawFaceExpressions(canvas, resizedResults, 0.05);
 
-    requestAnimationFrame(onPlay);
+    requestAnimationFrame(onPlay); // Continuar el ciclo con requestAnimationFrame
 }
 
 async function startRegistration() {
-    // Inicializa la transmisión de video.
     const video = document.getElementById("inputVideo");
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
         video.srcObject = stream;
-        video.onplay = onPlay; // Asegúrate de que esta línea sea correcta.
+        video.onplay = onPlay;
     } catch (error) {
         console.error("Error al acceder a la cámara web", error);
     }
 }
 
-// Asegúrate de que esta línea esté al final y solo se llame una vez.
-window.onload = loadModels;
+window.onload = loadModels; // Asegúrate de que esto esté escrito correctamente

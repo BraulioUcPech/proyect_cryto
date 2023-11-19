@@ -14,19 +14,31 @@
 
     <!--   Asegúrate de que la ruta a face-api.min.js sea correcta si decides usar una versión local -->
     <style>
-        #inputVideo, #overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* Asegúrate de que el video y el canvas se escalan juntos */
-    #inputVideo {
-        width: 100%;
-        height: auto; /* Mantiene la relación de aspecto */
-    }
+        video#inputVideo {
+            width: 720px;
+            height: 560px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
 
+        canvas#overlay {
+            width: 720px;
+            height: 560px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
     </style>
+
     <script defer src="{{ asset('js/face-api.min.js') }}"></script>
 </head>
 
@@ -54,19 +66,16 @@
             <h2 class="text-2xl font-semibold text-center text-gray-800 mb-8">Registro Facial</h2>
             <div class="flex flex-col items-center">
                 <div style="position: relative; width: 720px; height: 560px;">
-                    <video id="inputVideo" width="720" height="560" autoplay muted playsinline style="max-width: 100%; height: auto;"
-                        onplay="onPlay()"></video>
-
+                    <video id="inputVideo" autoplay muted playsinline></video>
                     <canvas id="overlay" style="position: absolute; top: 0; left: 0;"></canvas>
                 </div>
                 <button class="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    onclick="startRegistration()">
-                    Iniciar Registro
-                </button>
+                    onclick="startRegistration()">Iniciar Registro</button>
             </div>
         </section>
     </div>
 </main>
+
 
 
     <footer class="text-gray-600 body-font">
