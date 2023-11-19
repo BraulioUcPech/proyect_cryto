@@ -52,9 +52,10 @@
             <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                 <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                     <a href="/" class="mr-5 hover:text-gray-900">Inicio</a>
-                    <a href="/informacion" class="mr-5 hover:text-gray-900">Información</a>
-                    <a href="/galeria" class="mr-5 hover:text-gray-900">Galería</a>
+                    <a href="/inf" class="mr-5 hover:text-gray-900">Información</a>
                     <a href="/contacto" class="mr-5 hover:text-gray-900">Contacto</a>
+                    <a href="/login" class="mr-5 hover:text-gray-900">Iniciar Sesion</a>
+
                 </nav>
             </nav>
         </div>

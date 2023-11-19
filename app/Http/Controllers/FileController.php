@@ -63,6 +63,26 @@ class FileController extends Controller
 
         return redirect()->back()->with('success', 'Archivo subido y encriptado correctamente.');
     }
+    public function delete($id)
+    {
+        $file = File::find($id);
+
+        if (!$file) {
+            return response()->json(['success' => false, 'message' => 'Archivo no encontrado.']);
+        }
+
+        if ($file->path && Storage::exists($file->path)) {
+            Storage::delete($file->path);
+        }
+
+        $file->delete();
+
+        return response()->json(['success' => true, 'message' => 'Archivo eliminado con éxito.']);
+    }
+
+
+
+
 
 
 
@@ -87,6 +107,7 @@ class FileController extends Controller
         $files = File::where('user_id', $user->id)->get();
         return response()->json($files);
     }
+
 
 
     /*

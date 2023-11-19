@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/files', [FileController::class, 'index'])->name('files.index');
     Route::post('/files', [FileController::class, 'store'])->name('files.store');
     Route::get('/files/{id}', [FileController::class, 'download'])->name('files.download');
-
+    Route::get('/files/{id}/delete', [FileController::class, 'delete'])->name('files.delete');
 
 
 
@@ -36,6 +36,12 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('/verify-face', function () {
     return view('verify-face');
+});
+Route::get('/inf', function () {
+    return view('inf');
+});
+Route::get('/contacto', function () {
+    return view('contacto');
 });
 
 Route::middleware('auth:sanctum')->group(function () {

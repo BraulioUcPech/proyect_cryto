@@ -18,6 +18,7 @@ module.exports = {
         "./resources/**/*.vue",
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     ],
+    darkMode: 'class',
     theme: {
         extend: {
             filter: ["responsive"],
@@ -28,5 +29,6 @@ module.exports = {
         },
     },
     darkMode: "class",
-    plugins: [nextui(), forms],
+    plugins: [nextui(), forms(), require('@tailwindcss/forms'),
+],
 };
