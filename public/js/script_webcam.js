@@ -1,3 +1,11 @@
+document.addEventListener(
+    "wheel",
+    (event) => {
+        // tu código para manejar el evento 'wheel'
+    },
+    { passive: true }
+);
+
 async function loadModels() {
     const MODEL_URL = "/models";
 
@@ -14,7 +22,7 @@ async function onPlay() {
     const canvas = document.getElementById("overlay");
 
     if (video.paused || video.ended || !faceapi.nets.ssdMobilenetv1.params) {
-        requestAnimationFrame(onPlay); // Usar requestAnimationFrame para reintentar en el próximo frame
+        requestAnimationFrame(onPlay);
         return;
     }
 
@@ -30,7 +38,7 @@ async function onPlay() {
     faceapi.draw.drawFaceLandmarks(canvas, resizedResults);
     faceapi.draw.drawFaceExpressions(canvas, resizedResults, 0.05);
 
-    requestAnimationFrame(onPlay); // Continuar el ciclo con requestAnimationFrame
+    requestAnimationFrame(onPlay);
 }
 
 async function startRegistration() {
@@ -44,4 +52,4 @@ async function startRegistration() {
     }
 }
 
-window.onload = loadModels; // Asegúrate de que esto esté escrito correctamente
+window.onload = loadModels;
