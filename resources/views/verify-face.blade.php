@@ -13,7 +13,20 @@
     @vite('resources/css/app.css')
 
     <!--   Asegúrate de que la ruta a face-api.min.js sea correcta si decides usar una versión local -->
+    <style>
+        #inputVideo, #overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 
+    /* Asegúrate de que el video y el canvas se escalan juntos */
+    #inputVideo {
+        width: 100%;
+        height: auto; /* Mantiene la relación de aspecto */
+    }
+
+    </style>
     <script defer src="{{ asset('js/face-api.min.js') }}"></script>
 </head>
 
@@ -35,24 +48,26 @@
         </div>
     </header>
 
-    <main class="container mx-auto p-8">
-        <div class="flex justify-center items-center">
-            <div class="lg:w-2/3 bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-semibold text-center text-gray-800 mb-8">Registro Facial</h2>
-                <div class="flex flex-col items-center">
-                    <div style="position: relative">
-                        <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
-                        <canvas id="overlay">
-                    </div>
-                    <a href="/">
-                        <button class="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                            Iniciar Registro </button>
-                    </a>
+<main class="container mx-auto p-8">
+    <div class="flex justify-center items-center">
+        <section class="lg:w-2/3 bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-semibold text-center text-gray-800 mb-8">Registro Facial</h2>
+            <div class="flex flex-col items-center">
+                <div style="position: relative; width: 720px; height: 560px;">
+                    <video id="inputVideo" width="720" height="560" autoplay muted playsinline style="max-width: 100%; height: auto;"
+                        onplay="onPlay()"></video>
 
+                    <canvas id="overlay" style="position: absolute; top: 0; left: 0;"></canvas>
                 </div>
+                <button class="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    onclick="startRegistration()">
+                    Iniciar Registro
+                </button>
             </div>
-        </div>
-    </main>
+        </section>
+    </div>
+</main>
+
 
     <footer class="text-gray-600 body-font">
         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
