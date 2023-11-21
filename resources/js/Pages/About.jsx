@@ -165,7 +165,7 @@ export default function About({ auth, laravelVersion, phpVersion }) {
                                             href="/about"
                                             className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
                                         >
-                                            Live demo
+                                            Live
                                         </Link>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@ export default function About({ auth, laravelVersion, phpVersion }) {
                 </div>
             </div>
             {/* HERO FIN */}
-            
+
  <div className="bg-white">
                 <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
                     <div className="lg:grid lg:grid-cols-3 lg:gap-8">
