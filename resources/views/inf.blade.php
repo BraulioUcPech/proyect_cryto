@@ -11,6 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ ucfirst(Route::currentRouteName()) }} | Encrypto Cloud</title>
     <meta name="description" content="">
+        <link rel="icon" href="{{asset('icons/logo2.png')}}" type="image/svg+xml">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
     @vite('resources/css/app.css')
@@ -22,7 +24,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        
+
 
         <script src="" async defer></script>
     </body>

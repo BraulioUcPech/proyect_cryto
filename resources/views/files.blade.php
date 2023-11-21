@@ -7,6 +7,8 @@
 <html>
     <head> <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" href="{{asset('icons/logo2.png')}}" type="image/svg+xml">
+
     <title>{{ ucfirst(Route::currentRouteName()) }} | Encrypto Cloud</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,25 +85,35 @@ label span {
         <![endif]-->
 
     <body class="bg-gray-50 font-sans">
-    <header class="bg-white py-6 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="/">
-            <h1 class="text-4xl font-bold text-gray-800">Mis Archivos</h1>
+<header class="bg-white py-6 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <a href="/" class="flex-shrink-0">
+            <h1 class="text-5xl font-bold text-gray-900 hover:text-blue-900 transition-colors duration-300">Mis Archivos
+            </h1>
         </a>
-        <div class="flex items-center justify-center">
+        <div class="flex items-center space-x-4">
             <div class="text-center">
-                <p id="date" class="text-sm font-medium text-gray-700"> </p> <p id="time" class="text-sm text-gray-500"></p>
-                </div>
-                </div>
-        <div class="flex items-center justify-center">
-        @auth
-        <div class="flex items-center space-x-3">
-        <span class="text-lg font-medium text-gray-900">{{ Auth::user()->name }}</span>
-        <span class="text-gray-500">{{ Auth::user()->email }}</span>
+                <p id="date" class="text-lg font-semibold text-gray-800">Lunes, 20 de noviembre de 2023</p>
+                <p id="time" class="text-md text-gray-600">21:32:21</p>
+            </div>
         </div>
-        @endauth
+        <div class="flex items-center space-x-6">
+            @auth
+            <svg alt="{{ Auth::user()->name }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+
+            <div class="flex flex-col">
+                <span class="text-xl font-semibold text-gray-800">{{ Auth::user()->name }}</span>
+                <span class="text-md text-gray-500">{{ Auth::user()->email }}</span>
+            </div>
+            @endauth
         </div>
-    </header>
+    </div>
+</header>
+
 
     <main class="my-10">
         <div class="max-w-7xl mx-auto px-6">
@@ -117,8 +129,8 @@ label span {
                        </button>
                 </div>
 
-                <div class="w-1/4">
-                    <nav class="p-5 bg-white rounded-lg shadow" id="navbar" class="hidden md:block">
+                <div class="w-1/4" >
+                    <nav class="p-5 bg-white rounded-lg shadow-md" id="navbar" class="hidden md:block ">
                         <h3 class="text-xl font-semibold mb-5">Navegación</h3>
                         <ul class="space-y-2">
                             <li><a href="/profile" class="block text-indigo-600 hover:underline">Profile</a></li>
@@ -128,14 +140,14 @@ label span {
                             <li><a href="/system" class="block text-indigo-600 hover:underline">System</a></li>
                             <li><a href="/deployments" class="block text-indigo-600 hover:underline">Deployments</a></li>
                             <li><a href="/my-settings" class="block text-indigo-600 hover:underline">My Settings</a></li>
-                            <li><a href="/contact" class="block text-indigo-600 hover:underline">Contacto</a></li>
+                            <li><a href="/contact" class="block text-indigo-600 hover:underline">Contact</a></li>
                             <li><a href="/faq" class="block text-indigo-600 hover:underline">Help & Feedback</a></li>
                         </ul>
                     </nav>
                 </div>
 
-                <div class="w-3/4 mx-auto">
-                    <div class="bg-white p-6 rounded-lg shadow">
+                <div class="w-3/4 mx-auto ">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             @forelse ($files as $file)
                             <div class="border rounded-lg p-4 flex flex-col items-center space-y-2 relative">
@@ -169,7 +181,15 @@ label span {
                                 <h4 class="font-medium text-gray-900 text-sm truncate w-full text-center">{{ $file->file_name }}</h4>
 
                                 <a href="{{ route('files.download', $file->id) }}"
-                                    class="text-indigo-600 hover:text-indigo-800 text-xs">Descargar</a>
+
+                                    class="text-indigo-600 hover:text-indigo-800 text-xs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                        class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m-6 3.75l3 3m0 0l3-3m-3 3V1.5m6 9h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
+                                    </svg>
+                                    Descargar
+                                </a>
 
                                 <!-- Botón para desplegar opciones -->
                                 <button onclick="toggleDropdown('dropdown{{ $file->id }}')"
@@ -226,15 +246,18 @@ label span {
                 </script>
 
 
-              <div class="mt-6">
-                        <form action="{{ route('files.store') }}" method="post" enctype="multipart/form-data" class="bg-white p-4 shadow rounded-lg">
+              <div class="mt-6 " >
+                        <form action="{{ route('files.store') }}" method="post" enctype="multipart/form-data" class="bg-white p-4 rounded-lg shadow-md">
                             @csrf
-                                <!-- Contenedor para el input de archivo y el nombre del archivo -->
                                 <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                     <div class="space-y-1 text-center">
                                         <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
                                             aria-hidden="true">
-                                            <!-- Icono de carga (puedes reemplazarlo con un icono de Heroicons si lo prefieres) -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
+                                            </svg>
                                         </svg>
                                         <div class="flex text-sm text-gray-600">
                                             <label for="file-upload"
@@ -251,7 +274,7 @@ label span {
                                     </div>
                                 </div>
 
-                            <button type="submit" class="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded">
+                            <button type="submit" class="mt-4 bg-indigo-600 hover:bg-indigo-400 text-white font-medium py-2 px-4 rounded">
                                 Subir y encriptar
                             </button>
                         </form>

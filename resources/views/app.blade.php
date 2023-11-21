@@ -1,7 +1,7 @@
 <!DOCTYPE html> <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="{{ asset('/public/icons/logo.svg') }}" type="image/svg+xml">
+    <link rel="icon" href="{{asset('icons/logo2.png')}}" type="image/svg+xml">
 <meta name="description" content="Tu descripción aquí">
 <meta name="keywords" content="Palabras clave, separadas, por, comas">
 <meta name="author" content="Encrypto Cloud(1-17)">
@@ -19,7 +19,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    @inertia 
+    @inertia
 </body>
 
 </html>
