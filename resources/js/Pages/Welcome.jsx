@@ -88,7 +88,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
         { name: "Deployments", route: "/deployments" },
         { name: "My Settings", route: "/my-settings" },
         { name: "Team Settings", route: "/team-settings" },
-        { name: "Help & Feedback", route: "/help-feedback" },
+        { name: "Help & Feedback", route: "/faq" },
         { name: "Log Out", route: "#" },
     ];
 
@@ -132,13 +132,13 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                 <NavbarContent className="hidden sm:flex gap-4" justify="center">
                     <NavbarItem>
-                        <Link href="/ruta1">Home</Link>
+                        <Link href="/">Home</Link>
                     </NavbarItem>
                     <NavbarItem isActive>
-                        <Link href="/ruta2">FAQ</Link>
+                        <Link href="/faq">FAQ</Link>
                     </NavbarItem>
                     <NavbarItem>
-                        <Link href="/ruta1">About</Link>
+                        <Link href="/about">About</Link>
                     </NavbarItem>
                 </NavbarContent>
 
@@ -407,38 +407,38 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         ))}
                     </div>
                     </div>
-  <section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
-      <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
-      <div className="mx-auto max-w-2xl lg:max-w-4xl">
-        <img className="mx-auto h-12" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" alt="" />
-        <figure className="mt-10">
-          <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
-            <p>
-              “Innovation at Encrypto Cloud isn't just about technology; it's about shaping a future where security and simplicity coexist. 'Laborum quis quam' isn't just a motto, it's our commitment to excellence.”
-                                    </p>
+                    <section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
+                        <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
+                        <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
+                        <div className="mx-auto max-w-2xl lg:max-w-4xl">
+                            <img className="mx-auto h-12" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" alt="" />
+                            <figure className="mt-10">
+                            <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+                                <p>
+                                “Innovation at Encrypto Cloud isn't just about technology; it's about shaping a future where security and simplicity coexist. 'Laborum quis quam' isn't just a motto, it's our commitment to excellence.”
+                                                        </p>
 
-          </blockquote>
-          <figcaption className="mt-10">
-            <img
-              className="mx-auto h-10 w-10 rounded-full"
-              src=""
-              alt=""
-            />
-            <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-              <div className="font-semibold text-gray-900">Braulio Uc Pech</div>
-              <svg viewBox="0 0 2 2" width={3} height={3} aria-hidden="true" className="fill-gray-900">
-                <circle cx={1} cy={1} r={1} />
-              </svg>
-              <div className="text-gray-600">CEO of Workcation</div>
+                            </blockquote>
+                            <figcaption className="mt-10">
+                                <img
+                                className="mx-auto h-10 w-10 rounded-full"
+                                src=""
+                                alt=""
+                                />
+                                <div className="mt-4 flex items-center justify-center space-x-3 text-base">
+                                <div className="font-semibold text-gray-900">Braulio Uc Pech</div>
+                                <svg viewBox="0 0 2 2" width={3} height={3} aria-hidden="true" className="fill-gray-900">
+                                    <circle cx={1} cy={1} r={1} />
+                                </svg>
+                                <div className="text-gray-600">CEO of Workcation</div>
 
-            </div>
-          </figcaption>
+                                </div>
+                            </figcaption>
 
-        </figure>
+                            </figure>
 
-      </div>
-    </section>
+                        </div>
+                        </section>
                 </div>
             </main>
 

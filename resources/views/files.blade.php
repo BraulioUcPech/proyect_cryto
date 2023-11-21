@@ -128,7 +128,7 @@ label span {
                             <li><a href="/system" class="block text-indigo-600 hover:underline">System</a></li>
                             <li><a href="/deployments" class="block text-indigo-600 hover:underline">Deployments</a></li>
                             <li><a href="/my-settings" class="block text-indigo-600 hover:underline">My Settings</a></li>
-                            <li><a href="/contacto" class="block text-indigo-600 hover:underline">Contacto</a></li>
+                            <li><a href="/contact" class="block text-indigo-600 hover:underline">Contacto</a></li>
                             <li><a href="/faq" class="block text-indigo-600 hover:underline">Help & Feedback</a></li>
                         </ul>
                     </nav>
@@ -163,7 +163,7 @@ label span {
                                 @endif
 
                                 <div class="w-full h-32 bg-gray-200 flex items-center justify-center">
-                                    <span class="text-gray-400">Icono del archivo</span>
+                                    <span class="text-gray-400">{{$file->file_type}}</span>
                                 </div>
 
                                 <h4 class="font-medium text-gray-900 text-sm truncate w-full text-center">{{ $file->file_name }}</h4>
@@ -303,7 +303,7 @@ label span {
             </div>
             <div class="mt-8 md:mt-0 md:order-1">
                 <p class="text-center text-base text-gray-400">
-                    &copy; 2020 Your Company, Inc. All rights reserved.
+                    &copy; 2023 Your Company, Inc. All rights reserved.
                 </p>
             </div>
         </div>

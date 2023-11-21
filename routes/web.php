@@ -40,9 +40,17 @@ Route::get('/verify-face', function () {
 Route::get('/inf', function () {
     return view('inf');
 });
-Route::get('/contacto', function () {
+Route::get('/contact', function () {
     return view('contacto');
 });
+// routes/react
+Route::get('/about', function () {
+    return Inertia::render('About');
+});
+Route::get('/faq', function () {
+    return Inertia::render('Faq');
+});
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
