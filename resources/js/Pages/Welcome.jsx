@@ -150,11 +150,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                           <NavbarItem className="hidden lg:flex">
                             <Avatar
                                 isBordered color="primary"
-                                //src={user.avatarUrl}
+                                src={user.avatar}
                                 size="md"
                                 name={user.name.charAt(0)}
                                 description={user.email}
-                                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+
                                 onClick={() => {
                                     confetti({
                                         particleCount: 100,

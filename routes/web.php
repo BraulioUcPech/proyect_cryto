@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\FaceLoginController;
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\Api\UserController;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -50,6 +52,35 @@ Route::get('/about', function () {
 });
 Route::get('/faq', function () {
     return Inertia::render('Faq');
+});
+
+
+
+Route::get('/login-google', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/google-callback', function () {
+    $user = Socialite::driver('google')->user();
+
+    // Buscar por correo electrónico puede ser una mejor opción si el correo electrónico es único en su sistema.
+    $userExists = User::where('email', $user->email)->first();
+
+    if (!$userExists) {
+        $newUser = User::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'avatar' => $user->avatar,
+            'external_id' => $user->id,
+            'external_auth' => 'google',
+        ]);
+        Auth::login($newUser);
+    } else {
+        Auth::login($userExists);
+    }
+
+    // Asegúrate de devolver la redirección.
+    return redirect('/dashboard');
 });
 
 
