@@ -52,17 +52,24 @@ export default function Login({ status, canResetPassword }) {
 
     return (
         <GuestLayout>
+
             <Head title="Log in" />
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
-
+            <div>
+                <h2 className="mt-6 text-center text-3xl font-extrabold text-black">
+                   Sign in to your account
+                </h2>
+            </div>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="flex justify-center items-center min-h-screen"
             >
+
                 <form onSubmit={submit} className="mt-8 space-y-6 bg-white p-6 rounded-md shadow-lg">
+
                     <div>
                         <InputLabel htmlFor="email" value="Email" />
                         <TextInput

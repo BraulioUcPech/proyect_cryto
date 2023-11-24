@@ -9,6 +9,7 @@ import { Bars3Icon } from '@heroicons/react/24/outline'
 import { Dialog } from '@headlessui/react'
 import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
 
+import logo from '/public/icons/logo2.png';
 
 
 export default function About({ auth, laravelVersion, phpVersion }) {
@@ -88,11 +89,11 @@ export default function About({ auth, laravelVersion, phpVersion }) {
                         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                         <div className="flex lg:flex-1">
                             <a href="/" className="-m-1.5 p-1.5">
-                            <span className="sr-only">Your Company</span>
-                            <img
-                                className="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                alt=""
+                            <span className="sr-only">Encrypto Cloud</span>
+                             <img
+                                className="h-16 w-auto "
+                                src= {logo}
+                                alt="Logo"
                             />
                             </a>
                         </div>

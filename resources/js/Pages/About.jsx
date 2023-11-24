@@ -8,6 +8,7 @@ import { XMarkIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import { Dialog } from '@headlessui/react'
 import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import logo from '/public/icons/logo2.png';
 
 
 
@@ -43,11 +44,11 @@ export default function About({ auth, laravelVersion, phpVersion }) {
                         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                         <div className="flex lg:flex-1">
                             <a href="/" className="-m-1.5 p-1.5">
-                            <span className="sr-only">Your Company</span>
+                            <span className="sr-only">Encrypto Cloud</span>
                             <img
-                                className="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                alt=""
+                                className="h-16 w-auto "
+                                src= {logo}
+                                alt="Logo"
                             />
                             </a>
                         </div>
@@ -245,57 +246,58 @@ export default function About({ auth, laravelVersion, phpVersion }) {
                         <h2 className="max-w-md mx-auto text-3xl font-extrabold text-gray-900 lg:max-w-xl lg:text-4xl">
                             Everything you need to start encrypting your files
                         </h2>
-                        <div className="mt-12 lg:mt-0 lg:col-span-2">
-                            <dl className="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-8">
-                                <div className="relative">
-                                    <dt>
-                                        <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                                            <FingerPrintIcon className="h-6 w-6" aria-hidden="true" />
-                                        </div>
-                                        <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Security</p>
-                                    </dt>
-                                    <dd className="mt-2 ml-16 text-base text-gray-500">
-                                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
-                                    </dd>
+                                                <div className="mt-12 lg:mt-0 lg:col-span-2">
+                        <dl className="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-8">
+                            <div className="relative">
+                            <dt>
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <FingerPrintIcon className="h-6 w-6" aria-hidden="true" />
                                 </div>
+                                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Advanced Security</p>
+                            </dt>
+                            <dd className="mt-2 ml-16 text-base text-gray-500">
+                                Implement cutting-edge security measures with OpenSSL to protect data and ensure secure communication channels for your web applications.
+                            </dd>
+                            </div>
 
-                                <div className="relative">
-                                    <dt>
-                                        <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                                            <LockClosedIcon className="h-6 w-6" aria-hidden="true" />
-                                        </div>
-                                        <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Privacy</p>
-                                    </dt>
-                                    <dd className="mt-2 ml-16 text-base text-gray-500">
-                                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
-                                    </dd>
+                            <div className="relative">
+                            <dt>
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <LockClosedIcon className="h-6 w-6" aria-hidden="true" />
                                 </div>
+                                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Privacy Assurance</p>
+                            </dt>
+                            <dd className="mt-2 ml-16 text-base text-gray-500">
+                                OpenSSL provides SSL/TLS certificates, enhancing privacy and establishing trust between servers and clients by encrypting data in transit.
+                            </dd>
+                            </div>
 
-                                <div className="relative">
-                                    <dt>
-                                        <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                                            <ArrowPathIcon className="h-6 w-6" aria-hidden="true" />
-                                        </div>
-                                        <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Encryption</p>
-                                    </dt>
-                                    <dd className="mt-2 ml-16 text-base text-gray-500">
-                                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
-                                    </dd>
+                            <div className="relative">
+                            <dt>
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <ArrowPathIcon className="h-6 w-6" aria-hidden="true" />
                                 </div>
+                                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Robust Encryption</p>
+                            </dt>
+                            <dd className="mt-2 ml-16 text-base text-gray-500">
+                                Utilize OpenSSL's robust encryption algorithms to secure sensitive data, ensuring that your application adheres to the highest standards of data protection.
+                            </dd>
+                            </div>
 
-                                <div className="relative">
-                                    <dt>
-                                        <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                                            <CloudArrowUpIcon className="h-6 w-6" aria-hidden="true" />
-                                        </div>
-                                        <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Cloud</p>
-                                    </dt>
-                                    <dd className="mt-2 ml-16 text-base text-gray-500">
-                                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
-                                    </dd>
+                            <div className="relative">
+                            <dt>
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <CloudArrowUpIcon className="h-6 w-6" aria-hidden="true" />
                                 </div>
-                            </dl>
+                                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Cloud Integration</p>
+                            </dt>
+                            <dd className="mt-2 ml-16 text-base text-gray-500">
+                                Securely deploy and manage your applications in the cloud with OpenSSL, ensuring that data remains protected across all cloud-based operations.
+                            </dd>
+                            </div>
+                        </dl>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -332,7 +334,7 @@ export default function About({ auth, laravelVersion, phpVersion }) {
 
                         <div className="px-5 py-2">
                             <Link href="/" className="text-base text-gray-500 hover:text-gray-900">
-
+                                FAQ
                             </Link>
                         </div>
 

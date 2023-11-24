@@ -48,14 +48,14 @@
     <header class="text-gray-600 body-font">
 
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                <img src="{{asset('icons/logo2.svg')}}" alt="Logo" class="w-10 h-10">
+            <a href="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <img src="{{asset('icons/logo2.png')}}" alt="Logo" class="w-10 h-10">
                 <span class="ml-3 text-xl">Encrypto Cloud</span>
             </a>
             <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                 <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                     <a href="/" class="mr-5 hover:text-gray-900">Inicio</a>
-                    <a href="/inf" class="mr-5 hover:text-gray-900">Información</a>
+                    <a href="/infoface" class="mr-5 hover:text-gray-900">¿Qué es esto?</a>
                     <a href="/contact" class="mr-5 hover:text-gray-900">Contacto</a>
                     <a href="/login" class="mr-5 hover:text-gray-900">Iniciar Sesion</a>
 

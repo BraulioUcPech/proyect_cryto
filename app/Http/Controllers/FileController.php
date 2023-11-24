@@ -6,6 +6,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use App\Models\File;
 use Illuminate\Support\Facades\Crypt;
@@ -77,7 +78,7 @@ class FileController extends Controller
 
         $file->delete();
 
-        return response()->json(['success' => true, 'message' => 'Archivo eliminado con éxito.']);
+        return Redirect::to('/files');
     }
 
 

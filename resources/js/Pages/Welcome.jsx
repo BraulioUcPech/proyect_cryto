@@ -8,31 +8,33 @@ import { XMarkIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import { Dialog } from '@headlessui/react'
 import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import ApplicationLogo from '@/Components/ApplicationLogo';
+import logo from '/public/icons/logo2.png'; // Asegúrate de que la ruta sea correcta
 
 
 const features = [
   {
-    name: 'Push to deploy',
+    name: 'Push to Deploy',
     description:
-      'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
+      'Instantly deploy your applications with a simple push to your repository. Our streamlined process ensures your code goes live with zero downtime, ensuring a smooth workflow.',
     icon: CloudArrowUpIcon,
   },
   {
-    name: 'SSL certificates',
+    name: 'SSL Certificates',
     description:
-      'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
+      'Leverage OpenSSL to secure your communications with SSL/TLS certificates. Protect data in transit and establish trust with end-to-end encryption for your web applications.',
     icon: LockClosedIcon,
   },
   {
-    name: 'Simple queues',
+    name: 'Simple Queues',
     description:
-      'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
+      'Manage tasks efficiently with our intuitive queuing system. Organize and prioritize your application processes for optimal performance and scalability.',
     icon: ArrowPathIcon,
   },
   {
-    name: 'Advanced security',
+    name: 'Advanced Security',
     description:
-      'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
+      'With OpenSSLs robust encryption and secure communication features, our platform provides an additional layer of security. Safeguard your application against common vulnerabilities and threats.',
     icon: FingerPrintIcon,
   },
 ]
@@ -83,11 +85,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
         { name: "Profile", route: "/profile" },
         { name: "Dashboard", route: "/dashboard" },
         { name: "Activity", route: "/activity" },
-        { name: "Analytics", route: "/analytics" },
+        { name: "Analytics", route: "/dashboard" },
         { name: "System", route: "/system" },
-        { name: "Deployments", route: "/deployments" },
-        { name: "My Settings", route: "/my-settings" },
-        { name: "Team Settings", route: "/team-settings" },
+        { name: "Deployments", route: "/dashboard" },
+        { name: "My Settings", route: "/profile" },
+        { name: "About", route: "/about" },
         { name: "Help & Feedback", route: "/faq" },
         { name: "Log Out", route: "#" },
     ];
@@ -112,12 +114,12 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     <NavbarBrand>
                         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                         <div className="flex lg:flex-1">
-                            <a href="#" className="-m-1.5 p-1.5">
-                            <span className="sr-only">Your Company</span>
+                            <a href="/" className="-m-1.5 p-1.5">
+                            <span className="sr-only">Encrypto Cloud</span>
                             <img
-                                className="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                alt=""
+                                className="h-16 w-auto "
+                                src= {logo}
+                                alt="Logo"
                             />
                             </a>
                         </div>
@@ -255,6 +257,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
 
             <main className="flex items-center justify-center " >
+
                 <div className="bg-white py-24 sm:py-32">
                   <div className="bg-white">
                         <div className="relative isolate px-6 pt-14 lg:px-8">
@@ -370,13 +373,13 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
                         <div className="mx-auto max-w-2xl lg:text-center">
-                        <h2 className="text-base font-semibold leading-7 text-indigo-600">Deploy faster</h2>
+                        <h2 className="text-base font-semibold leading-7 text-indigo-600">Secure Your Applications</h2>
                         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                            Everything you need to deploy your app
-                        </p>
+                                    OpenSSL: Robust Cryptography for Secure Communication
+                                </p>
                         <p className="mt-6 text-lg leading-8 text-gray-600">
-                            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-                            pulvinar et feugiat blandit at. In mi viverra elit nunc.
+                               OpenSSL is an essential toolkit for implementing cryptography and secure communication in your applications. With commercial-grade features, it's designed to be both robust and full-featured, facilitating encryption, decryption, and secure data transfer. Governed by a dedicated committee and available under an open-source license, OpenSSL allows you to fortify your applications against vulnerabilities with confidence. Engage with the community or contribute to the project to enhance its capabilities for a secure digital world.
+
                         </p>
                         </div>
                         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">

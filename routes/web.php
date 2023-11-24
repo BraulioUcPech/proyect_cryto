@@ -37,9 +37,10 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/verify-face', function () {
     return view('verify-face');
 });
-Route::get('/inf', function () {
-    return view('inf');
+Route::get('/infoface', function () {
+    return Inertia::render('Infface');
 });
+
 Route::get('/contact', function () {
     return view('contacto');
 });

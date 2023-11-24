@@ -14,8 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
     <style>
-        /* En tu archivo CSS o en las etiquetas <style> */
-        @media (max-width: 640px) {
+         @media (max-width: 640px) {
         .responsive-grid {
             grid-template-columns: repeat(1, minmax(0, 1fr));
         }
@@ -32,15 +31,12 @@
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
         }
-        /* CSS para ocultar la barra de navegación en pantallas pequeñas */
 @media (max-width: 768px) {
   #navbar {
     display: none;
   }
 }
-/* Puedes agregar esto en tu archivo CSS o dentro de una etiqueta <style> en tu documento HTML */
 label {
-  /* Esto es solo para el ejemplo; Tailwind CSS tiene clases para todo esto */
   display: inline-block;
   padding: 0.5rem 1rem;
   background-color: #ffffff;
