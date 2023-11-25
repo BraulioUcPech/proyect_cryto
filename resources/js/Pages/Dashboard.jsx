@@ -6,6 +6,7 @@ import { getFilesData } from '@/Components/GetFileData';
 import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem} from "@nextui-org/react";
 import { Card, CardBody, Link } from "@nextui-org/react";
 import Chart from 'chart.js/auto';
+import { motion } from 'framer-motion';
 
 export default function Dashboard({ auth }) {
 
@@ -127,6 +128,20 @@ export default function Dashboard({ auth }) {
                             </div>
                         </div>
                             </div>
+                             <motion.button
+                        whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                        whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
+                        onClick={() => window.location.href='http://127.0.0.1:8000/verify-face'}
+                        className="relative overflow-hidden py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 ease-in-out"
+                        style={{
+                            boxShadow: '0 4px 14px 0 rgba(0, 118, 255, 0.39)'
+                        }}
+                    >
+                        <span className="absolute left-0 top-0 h-full w-1 bg-white opacity-75 transition-all duration-300 ease-in-out transform scale-0 group-hover:scale-100" />
+                        <span className="relative">
+                            Verify Face
+                        </span>
+                    </motion.button>
 
                             <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                         <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white p-4">

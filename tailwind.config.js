@@ -18,7 +18,7 @@ module.exports = {
         "./resources/**/*.vue",
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     ],
-    darkMode: 'class',
+    darkMode: 'classp',
     theme: {
         extend: {
             filter: ["responsive"],

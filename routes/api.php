@@ -3,7 +3,7 @@
 use App\Http\Controllers\FileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\FaceLoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -50,3 +50,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/api/files', [FileController::class, 'apiIndex']);
     Route::post('/api/files', [FileController::class, 'apiIndex']);
 });
+
+
+Route::post('/api/save-face-data', [FaceLoginController::class, 'store']);
+

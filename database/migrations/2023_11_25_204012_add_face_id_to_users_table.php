@@ -12,12 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('password')->nullable()->change();
-            $table->string('avatar')->nullable();
-            $table->string('external_id')->nullable();
-            $table->string('external_auth')->nullable();
+            $table->unsignedBigInteger('face_id')->nullable(); // Asegúrate de que el tipo de columna sea compatible con la columna 'id' de 'face_data'.
+            $table->foreign('face_id')->references('id')->on('face_data')->onDelete('set null');
         });
-
     }
 
     /**
@@ -25,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['face_id']);
+            $table->dropColumn('face_id');
+        });
     }
 };

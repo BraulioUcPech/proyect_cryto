@@ -7,7 +7,7 @@
 <html>
     <head> <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="icon" href="{{asset('icons/logo2.png')}}" type="image/svg+xml">
+        <link rel="icon" href="{{asset('icons/w.png')}}" type="image/svg+xml">
 
     <title>{{ ucfirst(Route::currentRouteName()) }} | Encrypto Cloud</title>
     <meta name="description" content="">

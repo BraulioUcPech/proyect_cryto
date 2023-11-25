@@ -28,6 +28,10 @@ class User extends Authenticatable
         'face_id',
 
     ];
+    public function faceData()
+    {
+        return $this->belongsTo(FaceData::class, 'face_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

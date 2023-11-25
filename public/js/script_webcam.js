@@ -17,6 +17,34 @@ async function loadModels() {
     console.log("Modelos cargados");
 }
 
+let isFaceDataSent = false;
+
+function DataToJSON(faceData) {
+    return JSON.stringify(faceData.map((fd) => fd.descriptor));
+}
+
+async function sendFaceDataToDatabase(faceDataJSON) {
+    const descriptors = JSON.parse(faceDataJSON);
+    const response = await fetch("http://127.0.0.1:8000/api/save-face-data", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content"),
+        },
+        body: JSON.stringify({ descriptors }),
+    });
+    if (!response.ok) {
+        throw new Error(
+            `Error al enviar datos de la cara: ${response.statusText}`
+        );
+    }
+
+    return response.json();
+}
+
+
 async function onPlay() {
     const video = document.getElementById("inputVideo");
     const canvas = document.getElementById("overlay");
@@ -38,7 +66,20 @@ async function onPlay() {
     faceapi.draw.drawFaceLandmarks(canvas, resizedResults);
     faceapi.draw.drawFaceExpressions(canvas, resizedResults, 0.05);
 
+    if (!isFaceDataSent && fullFaceDescriptions.length > 0) {
+        const faceDataJSON = DataToJSON(fullFaceDescriptions);
+        const responseData = await sendFaceDataToDatabase(faceDataJSON);
+        isFaceDataSent = true; // Establece la bandera para que no se vuelva a enviar
+
+        console.log(responseData.message);
+        if (responseData.success) {
+            window.location.href = "/dashboard";
+        }
+    }
+
     requestAnimationFrame(onPlay);
+
+
 }
 
 async function startRegistration() {
@@ -53,3 +94,7 @@ async function startRegistration() {
 }
 
 window.onload = loadModels;
+
+
+// Suponiendo que ya has obtenido los descriptores faciales como en el paso anterior
+
