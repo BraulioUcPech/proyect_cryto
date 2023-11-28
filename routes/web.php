@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/files', [FileController::class, 'store'])->name('files.store');
     Route::get('/files/{id}', [FileController::class, 'download'])->name('files.download');
     Route::get('/files/{id}/delete', [FileController::class, 'delete'])->name('files.delete');
+    Route::get('/files/{id}', [FileController::class, 'downloadEncrypted'])->name('files.downloadEncrypted');
 
 
 
@@ -44,8 +45,13 @@ Route::get('/infoface', function () {
 });
 
 Route::get('/contact', function () {
-    return view('contacto');
+    return Inertia::render('Contacto');
 });
+Route::get('/privacy', function () {
+    return Inertia::render('Privacy');
+});
+
+
 // routes/react
 Route::get('/about', function () {
     return Inertia::render('About');

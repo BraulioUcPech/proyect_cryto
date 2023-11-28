@@ -16,7 +16,7 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'file' => 'required|file|max:10240',
+            'file' => 'required|file|max:5242880',
         ]);
         $fileInstance = $request->file('file');
         $fileContent = file_get_contents($fileInstance->getRealPath());
@@ -85,9 +85,6 @@ class FileController extends Controller
 
 
 
-
-
-
     public function index()
     {
         $user = auth()->user();
@@ -111,10 +108,10 @@ class FileController extends Controller
 
 
 
-    /*
+
     public function downloadEncrypted($id)
 {
-    $file = File::findOrFail($id); // Buscar el archivo por ID
+    $file = File::findOrFail($id);
 
     $encryptedFilePath = "files/{$file->file_name}";
     if (!Storage::disk('public')->exists($encryptedFilePath)) {
@@ -123,20 +120,17 @@ class FileController extends Controller
 
     $encryptedContent = Storage::disk('public')->get($encryptedFilePath);
 
-    // Preparar los encabezados para la descarga del archivo cifrado
     $headers = [
-        'Content-Disposition' => 'attachment; filename="' . $file->file_name . '"', // Usa el nombre de archivo cifrado
-        'Content-Length' => $file->file_size // Opcional, pero es buena práctica incluir el tamaño del archivo
+        'Content-Disposition' => 'attachment; filename="' . $file->file_name . '"',
+        'Content-Length' => $file->file_size
     ];
 
-    // Limpiar los búferes de salida para evitar archivos corruptos
     ob_end_clean();
 
-    // Retornar una respuesta con el contenido cifrado y los encabezados adecuados para la descarga
     return response()->make($encryptedContent, 200, $headers);
 }
 
-*/
+
 
     public function download($id)
     {

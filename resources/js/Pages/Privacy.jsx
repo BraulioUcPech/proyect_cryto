@@ -1,5 +1,3 @@
-import React, { useState, useCallback } from "react";
-
 import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, User, Divider } from "@nextui-org/react";
 import { Card, CardHeader, CardBody, CardFooter, Image, Avatar, AvatarGroup, AvatarIcon, Skeleton, Link,Accordion, AccordionItem} from "@nextui-org/react";
 import confetti from 'canvas-confetti';
@@ -8,43 +6,31 @@ import { XMarkIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import { Dialog } from '@headlessui/react'
 import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import React, { useState, useCallback } from "react";
 
 import logo from '/public/icons/logo2.png';
 
 
-
-
-
-export default function Infface({ auth, laravelVersion, phpVersion }) {
-
+export default function Dashboard(props, auth) {
   const { user } = auth;
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const menuItems = [
-        { name: "Profile", route: "/profile" },
-        { name: "Dashboard", route: "/dashboard" },
-        { name: "Activity", route: "/activity" },
-        { name: "Analytics", route: "/dashboard" },
-        { name: "System", route: "/system" },
-        { name: "Deployments", route: "/dashboard" },
-        { name: "My Settings", route: "/profile" },
-        { name: "About", route: "/about" },
-        { name: "Help & Feedback", route: "/faq" },
-        { name: "Log Out", route: "#" },
-    ];
-
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    const toggleDarkMode = useCallback(() => {
-        setIsDarkMode(currentMode => !currentMode);
-    }, []);
+        const menuItems = [
+            { name: "Profile", route: "/profile" },
+            { name: "Dashboard", route: "/dashboard" },
+            { name: "Activity", route: "/activity" },
+            { name: "Analytics", route: "/analytics" },
+            { name: "System", route: "/system" },
+            { name: "Deployments", route: "/deployments" },
+            { name: "My Settings", route: "/my-settings" },
+            { name: "Team Settings", route: "/team-settings" },
+            { name: "Help & Feedback", route: "/faq" },
+            { name: "Log Out", route: "#" },
+        ];
 
 
     return (
         <>
+
             {/* NAVBAR INICIO */}
             <Navbar onMenuOpenChange={setIsMenuOpen}>
                 <NavbarContent>
@@ -68,7 +54,7 @@ export default function Infface({ auth, laravelVersion, phpVersion }) {
                             <div className="flex lg:hidden">
                             </div>
                         </nav>
-                        <a>Encrypto Cloud</a>
+                        <a href="/">Encrypto Cloud</a>
                     </NavbarBrand>
                     <Skeleton />
 
@@ -147,136 +133,94 @@ export default function Infface({ auth, laravelVersion, phpVersion }) {
 
 
             </Navbar>
-
             {/* NAVBAR FIN */}
-            {/* CONTENIDO INICIO */}
 
-            <div className="flex flex-col min-h-screen">
-                <main className="flex-1">
-                    <div className="bg-white py-6">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="flex items-center justify-between flex-wrap">
-                                <div className="w-0 flex-1 flex items-center">
-                                    <span className="flex p-2 rounded-lg bg-indigo-800">
-                                        <LockClosedIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                                    </span>
-                                    <p className="ml-3 font-medium text-black truncate">
-                                        <span className="md:hidden">We announced a new product!</span>
-                                        <span className="hidden md:inline">Big news! We're excited to announce a brand new product.</span>
-                                    </p>
-                                </div>
-                                <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
-                                    <a
-                                        href="https://github.com/justadudewhohacks/face-api.js/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-800 bg-white hover:bg-indigo-50"
-                                    >
-                                        Learn more
-                                    </a>
-
-                                </div>
-                                <div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
-                                    <button type="button" className="-mr-1 flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2" onClick={() => setIsMenuOpen(true)}>
-                                        <span className="sr-only">Dismiss</span>
-                                        <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="py-6">
-                        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                            <div className="px-4 py-6 sm:px-0">
-                                <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
-                                    <div className="py-6">
-                                        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-                                            <div className="">
-                                                <div className="bg-indigo-700 p-6 lg:p-8 rounded-md">
-                                                    <h2 className="text-3xl font-bold text-white mb-2">Discover face-api.js</h2>
-                                                    <p className="text-white text-opacity-80 text-lg">
-                                                        A cutting-edge tool for facial recognition technology in web applications.
-                                                    </p>
-                                                </div>
-                                                <div className="p-6 lg:p-8 space-y-4">
-                                                    <h3 className="text-2xl font-semibold text-indigo-600">How It Enhances User Experience</h3>
-                                                    <p className="text-gray-700">
-                                                        Face-api.js utilizes TensorFlow.js for real-time face detection and recognition, bringing a new level of interactivity and security to web and Node.js applications.
-                                                    </p>
-                                                    <ul className="list-disc pl-5 space-y-2 text-gray-600">
-                                                        <li><strong>Face Detection</strong>: Quickly and accurately identifies faces in images and videos.</li>
-                                                        <li><strong>Landmark Detection</strong>: Provides detailed analysis of facial features.</li>
-                                                        <li><strong>Face Recognition</strong>: Enhances security by verifying user identity.</li>
-                                                        <li><strong>Expression Recognition</strong>: Opens up possibilities for dynamic, responsive user interfaces.</li>
-                                                    </ul>
-                                                    <p className="text-gray-700">
-                                                        From security enhancements to creating engaging user interfaces, face-api.js is a versatile tool that's reshaping how we interact with technology.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </main>
-
-
-            </div>
-
-            <section className="my-10">
-                <div className="container mx-auto px-4">
-                    <h2 className="text-4xl font-bold text-center mb-6">Discover face-api.js</h2>
-                    <p className="text-lg text-gray-700 mb-4">
-                        Face-api.js is a comprehensive JavaScript library that offers robust and precise face detection and
-                        recognition capabilities in the browser and on Node.js. Utilizing TensorFlow.js, it provides several
-                        high-performance models for a variety of face detection tasks.
-                    </p>
-
-                    <div className="grid md:grid-cols-2 gap-8">
+            {/* QUIERO HABLAR SOBRE LAS privacy */}
+            <div className="bg-white">
+                <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
+                    <div className="lg:grid lg:grid-cols-3 lg:gap-8">
                         <div>
-                            <h3 className="text-3xl font-semibold mb-3">Key Features</h3>
-                            <ul className="text-gray-600 space-y-2">
-                                <li>Multiple deep learning models for face detection, such as SSD Mobilenet V1, Tiny Face Detector, and MTCNN.</li>
-                                <li>Real-time face detection and tracking capabilities.</li>
-                                <li>68-point facial landmark detection for precise feature tracking.</li>
-                                <li>Facial expression recognition to classify various emotional states.</li>
-                                <li>Robust performance under various conditions, including challenging lighting and angles.</li>
-                            </ul>
+                            <h2 className="text-3xl font-extrabold text-gray-900">Privacy Policy</h2>
+                            <p className="mt-4 text-lg text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit ex obcaecati natus eligendi delectus, cum deleniti sunt in labore nihil quod quibusdam expedita nemo.</p>
                         </div>
-
-                        <div>
-                            <h3 className="text-3xl font-semibold mb-3">Applications</h3>
-                            <ul className="text-gray-600 space-y-2">
-                                <li>Enhanced security and user verification for web applications.</li>
-                                <li>Interactive augmented reality experiences on social media.</li>
-                                <li>Emotion analysis for user feedback and engagement monitoring.</li>
-                                <li>Accessible interfaces through face gesture-based navigation.</li>
-                            </ul>
+                        <div className="mt-12 lg:mt-0 lg:col-span-2">
+                            <dl className="space-y-12">
+                                <div>
+                                    <dt className="text-lg leading-6 font-medium text-gray-900">
+                                        What data do we collect?
+                                    </dt>
+                                    <dd className="mt-2 text-base text-gray-500">
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.
+                                        </p>
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt className="text-lg leading-6 font-medium text-gray-900">
+                                        How do we use this data?
+                                    </dt>
+                                    <dd className="mt-2 text-base text-gray-500">
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.
+                                        </p>
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt className="text-lg leading-6 font-medium text-gray-900">
+                                        What data do we share?
+                                    </dt>
+                                    <dd className="mt-2 text-base text-gray-500">
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.
+                                        </p>
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt className="text-lg leading-6 font-medium text-gray-900">
+                                        How do we share data?
+                                    </dt>
+                                    <dd className="mt-2 text-base text-gray-500">
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupid itate laboriosam fugiat.
+                                        </p>
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt className="text-lg leading-6 font-medium text-gray-900">
+                                        How do we protect your data?
+                                    </dt>
+                                    <dd className="mt-2 text-base text-gray-500">
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.
+                                        </p>
+                                    </dd>
+                                </div>
+                            </dl>
                         </div>
-                    </div>
-
-                    <div className="mt-8">
-                        <h3 className="text-3xl font-semibold mb-3">Getting Started</h3>
-                        <p className="text-gray-700 mb-4">
-                            Installing face-api.js is straightforward with npm, and its high-level API interface
-                            simplifies the integration into your projects. It's an open-source library, with
-                            extensive documentation and community support, perfect for developers looking to
-                            implement face detection features.
-                        </p>
-                        <a href="https://github.com/justadudewhohacks/face-api.js/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-indigo-600 text-white px-6 py-3 rounded-md shadow hover:bg-indigo-700 transition-colors duration-200">
-                            Learn More
-                        </a>
                     </div>
                 </div>
-            </section>
-            {/* CONTENIDO FIN */}
+            </div>
+
+            {/* QUIERO HABLAR SOBRE LAS privacy */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             {/* FOOTER INICIO */}
             <footer className="bg-white">
                 <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
@@ -345,8 +289,6 @@ export default function Infface({ auth, laravelVersion, phpVersion }) {
                 <p className="mt-8 text-center text-base text-gray-400">&copy; 2023 Encrypto Cloud, Inc. All rights reserved.</p>
             </footer>
             {/* FOOTER FIN */}
-
         </>
     );
-
 }
