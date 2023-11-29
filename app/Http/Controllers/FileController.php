@@ -79,7 +79,7 @@ class FileController extends Controller
 
         $file->delete();
 
-        return Redirect::to('/files');
+        return Redirect::to('/files')->with('success', 'Archivo subido y encriptado correctamente.');
     }
 
 

@@ -161,6 +161,7 @@
                 <div class="w-3/4 mx-auto ">
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
                             @forelse ($files as $file)
                             <div class="border rounded-lg p-4 flex flex-col items-center space-y-2 relative">
 
@@ -243,13 +244,20 @@
                                         class="text-sm hover:bg-blue-100 text-blue-600 block px-4 py-2">Details</a>
 
                                         <li>
-                                            <a href="{{ route('files.downloadEncrypted', $file->id) }}" onclick="toggleDropdown('dropdown{{ $file->id }}')"
+                                            <a href="{{ route('files.downloadEncrypted', $file->id) }}" onclick="toggleDropdown('dropdown{{ $file->id }}'), return confirm('Are you sure you want to download this file?')"
                                                 class="text-sm text-yellow-700 hover:text-yellow-500 hover:bg-yellow-100 block px-4 py-2">Download encrypted</a>
                                         </li>
 
                                     <li>
-                                        <a href="{{ route('files.delete', $file->id) }}" onclick="toggleDropdown('dropdown{{ $file->id }}')"
-                                            class="text-sm hover:text-red-500 text-red-600 hover:bg-red-100 block px-4 py-2">Delete</a>
+                                        <a href="{{ route('files.delete', $file->id) }}" onclick="toggleDropdown('dropdown{{ $file->id }}'), return confirmDelete('dropdown{{ $file->id }}')"
+                                            class="text-sm hover:text-red-500 text-red-600 hover:bg-red-100 block px-4 py-2">Delete
+                                        </a>
+                                        @if(session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                        @endif
+
                                     </li>
 
                                     </ul>
@@ -348,6 +356,13 @@ function closeModal() {
                         dropdown.classList.add('hidden');
                     }, 150);
                 }
+  // Función JavaScript para confirmar la eliminación
+    function confirmDelete(fileId) {
+        if (confirm('Are you sure you want to delete this file?')) {
+            // Lógica para llamar a la ruta de eliminación
+            window.location.href = `/files/${id}/delete`;
+        }
+    }
 
 
                 </script>
@@ -386,12 +401,7 @@ function closeModal() {
                             </div>
 
                         </div>
-@if (session('success'))
-<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-    <strong class="font-bold">Success!</strong>
-    <span class="block sm:inline">{{ session('success') }}</span>
-</div>
-@endif
+
 
 
                         <button type="submit"
