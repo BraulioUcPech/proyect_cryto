@@ -92,6 +92,7 @@ Route::get('/google-callback', function () {
 
 Route::post('/api/save-face-data', [FaceLoginController::class, 'store']);
 
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();

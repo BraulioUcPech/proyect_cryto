@@ -94,8 +94,8 @@
     <header class="bg-white py-6 shadow-md">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <a href="/" class="flex-shrink-0">
-                <h1 class="text-5xl font-bold text-gray-900 hover:text-blue-900 transition-colors duration-300">Mis
-                    Archivos
+                <h1 class="text-5xl font-bold text-gray-900 hover:text-blue-900 transition-colors duration-300">My
+                Archives
                 </h1>
             </a>
             <div class="flex items-center space-x-4">
@@ -141,7 +141,7 @@
 
                 <div class="w-1/4">
                     <nav class="p-5 bg-white rounded-lg shadow-md" id="navbar" class="hidden md:block ">
-                        <h3 class="text-xl font-semibold mb-5">Navegación</h3>
+                        <h3 class="text-xl font-semibold mb-5">Navigation</h3>
                         <ul class="space-y-2">
                             <li><a href="/profile" class="block text-indigo-600 hover:underline">Profile</a></li>
                             <li><a href="/dashboard" class="block text-indigo-600 hover:underline">Dashboard</a></li>
@@ -201,7 +201,7 @@
                                 @break
 
                                 @default
-                                <p>Archivo no previsualizable</p>
+                                <p>File not previewablee</p>
                                 @endswitch
 
                                 <div class="w-full h-32 bg-gray-200 flex items-center justify-center">
@@ -218,7 +218,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m-6 3.75l3 3m0 0l3-3m-3 3V1.5m6 9h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
                                     </svg>
-                                    Descargar
+                                    Download
                                 </a>
 
 
@@ -238,27 +238,27 @@
                                     <ul class="py-1" aria-labelledby="dropdownButton">
                                         <li>
 
-                                        <a href="#"
-                                            onclick='openModal({{ json_encode(["name" => $file->name, "file_size" => $file->file_size, "file_name" =>$file->file_name, "iv" => $file->iv, "file_type" => $file->file_type, "created_at" => $file->created_at->toDateTimeString()]) }})'
-                                            class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Ver</a>
+                                    <a href="#"
+                                        onclick='openModal({{ json_encode(["name" => $file->name, "file_size" => $file->file_size, "file_name" =>$file->file_name, "iv" => $file->iv, "file_type" => $file->file_type, "created_at" => $file->created_at->toDateTimeString()]) }}), toggleDropdown("dropdown{{ $file->id }}")'
+                                        class="text-sm hover:bg-blue-100 text-blue-600 block px-4 py-2">Details</a>
 
+                                        <li>
+                                            <a href="{{ route('files.downloadEncrypted', $file->id) }}" onclick="toggleDropdown('dropdown{{ $file->id }}')"
+                                                class="text-sm text-yellow-700 hover:text-yellow-500 hover:bg-yellow-100 block px-4 py-2">Download encrypted</a>
+                                        </li>
 
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('files.downloadEncrypted', $file->id) }}"
-                                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Descargar encriptado</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('files.delete', $file->id) }}"
-                                                class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Eliminar</a>
-                                        </li>
+                                    <li>
+                                        <a href="{{ route('files.delete', $file->id) }}" onclick="toggleDropdown('dropdown{{ $file->id }}')"
+                                            class="text-sm hover:text-red-500 text-red-600 hover:bg-red-100 block px-4 py-2">Delete</a>
+                                    </li>
+
                                     </ul>
                                 </div>
 
                             </div>
                             @empty
                             <div class="col-span-3">
-                                <p class="text-gray-600 text-center">No hay archivos para mostrar.</p>
+                                <p class="text-gray-600 text-center">No files to display.</p>
                             </div>
 
                             @endforelse
@@ -277,59 +277,78 @@
                         <!-- Botón para cerrar el modal -->
                         <button onclick="closeModal()"
                             class="mt-3 text-white bg-red-500 hover:bg-red-400 font-bold py-2 px-4 rounded">
-                            Cerrar
+                            Close
                         </button>
                     </div>
                 </div>
             </div>
 
 <script>
+function openModal(fileInfo) {
+    const { name, file_name, iv, file_size, file_type, created_at } = fileInfo;
 
+    // Construye el HTML con inputs para la información del archivo
+    const contentHtml = `
+        <div class="space-y-2">
+            <label><strong>Name:</strong></label>
+            <input type="text" value="${name}" class="w-full p-2 border rounded" readonly>
 
+            <label><strong>File Name ENC:</strong></label>
+            <input type="text" value="${file_name}" class="w-full p-2 border rounded" readonly>
 
+            <label><strong>Encrypted Data:</strong></label>
+            <input type="text" value="${iv}" class="w-full p-2 border rounded" readonly>
 
-   // Función para abrir el modal con la información del archivo
-    function openModal(fileInfo) {
-        const { name, file_name, iv, file_size, file_type, created_at } = fileInfo;
+            <label><strong>Size:</strong></label>
+            <input type="text" value="${file_size} bytes" class="w-full p-2 border rounded" readonly>
 
-        // Construye el HTML con la información del archivo
-        const contentHtml = `
-        <p><strong>Nombre:</strong> ${name}</p>
-        <p><strong>File Name ENC:</strong> ${file_name}</p>
-        <p><strong>Encrypted Data:</strong> ${iv}</p>
-        <p><strong>Tamaño:</strong> ${file_size} bytes</p>
-        <p><strong>Tipo:</strong> ${file_type}</p>
-        <p><strong>Creado:</strong> ${created_at}</p>
+            <label><strong>Type:</strong></label>
+            <input type="text" value="${file_type}" class="w-full p-2 border rounded" readonly>
+
+            <label><strong>Created at:</strong></label>
+            <input type="text" value="${created_at}" class="w-full p-2 border rounded" readonly>
+        </div>
     `;
 
-        // Actualiza el contenido del modal y lo muestra
-        document.getElementById('modal-content').innerHTML = contentHtml;
-        document.getElementById('viewModal').classList.remove('hidden');
-    }
+    // Actualiza el contenido del modal y lo muestra
+    document.getElementById('modal-content').innerHTML = contentHtml;
+    document.getElementById('viewModal').classList.remove('hidden');
+}
 
-    // Función para cerrar el modal
-    function closeModal() {
-        document.getElementById('viewModal').classList.add('hidden');
-    }
+// Función para cerrar el modal
+function closeModal() {
+    document.getElementById('viewModal').classList.add('hidden');
+}
+
 
 </script>
 
                 <script>
-                    // Función para alternar la visibilidad del menú desplegable
-                    function toggleDropdown(dropdownId) {
-                        var dropdown = document.getElementById(dropdownId);
-                        if (dropdown.classList.contains('hidden')) {
-                            dropdown.classList.remove('hidden');
-                            setTimeout(() => {
-                                dropdown.style.opacity = 1;
-                            }, 10);
-                        } else {
-                            dropdown.style.opacity = 0;
-                            setTimeout(() => {
-                                dropdown.classList.add('hidden');
-                            }, 150);
-                        }
+               // Función para alternar la visibilidad del menú desplegable
+                function toggleDropdown(dropdownId) {
+                    var dropdown = document.getElementById(dropdownId);
+                    if (dropdown.classList.contains('hidden')) {
+                        dropdown.classList.remove('hidden');
+                        setTimeout(() => {
+                            dropdown.style.opacity = 1;
+                        }, 10);
+                    } else {
+                        dropdown.style.opacity = 0;
+                        setTimeout(() => {
+                            dropdown.classList.add('hidden');
+                        }, 150);
                     }
+                }
+
+                // Función para ocultar el menú desplegable al hacer clic en un elemento
+                function hideDropdownOnClick(dropdownId) {
+                    var dropdown = document.getElementById(dropdownId);
+                    dropdown.style.opacity = 0;
+                    setTimeout(() => {
+                        dropdown.classList.add('hidden');
+                    }, 150);
+                }
+
 
                 </script>
 
@@ -353,14 +372,14 @@
                                 <div class="flex text-sm text-gray-600">
                                     <label for="file-upload"
                                         class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                        <span>Subir un archivo</span>
+                                        <span>File upload</span>
                                         <input id="file-upload" name="file" type="file" class="sr-only"
                                             onchange="updateFileName()">
                                     </label>
-                                    <p class="pl-1">o arrastra y suelta</p>
+                                    <p class="pl-1">or drag and drop</p>
                                 </div>
                                 <p class="text-xs text-gray-500">
-                                    Cualquier tipo de archivo; hasta 10MB
+                                    Any file type; up to 10MB
                                 </p>
                                 <div id="file-upload-filename" class="text-sm text-gray-900"></div>
                             </div>
@@ -368,7 +387,7 @@
 
                         <button type="submit"
                             class="mt-4 bg-indigo-600 hover:bg-indigo-400 text-white font-medium py-2 px-4 rounded">
-                            Subir y encriptar
+                            Upload and encrypt
                         </button>
                     </form>
                 </div>

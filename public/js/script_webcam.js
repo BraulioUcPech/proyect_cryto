@@ -23,26 +23,31 @@ function DataToJSON(faceData) {
     return JSON.stringify(faceData.map((fd) => fd.descriptor));
 }
 
-async function sendFaceDataToDatabase(faceDataJSON) {
-    const descriptors = JSON.parse(faceDataJSON);
-    const response = await fetch("http://127.0.0.1:8000/api/save-face-data", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-TOKEN": document
-                .querySelector('meta[name="csrf-token"]')
-                .getAttribute("content"),
-        },
-        body: JSON.stringify({ descriptors }),
-    });
-    if (!response.ok) {
-        throw new Error(
-            `Error al enviar datos de la cara: ${response.statusText}`
-        );
-    }
+// Resto del código...
 
-    return response.json();
+async function sendFaceDataToDatabase(faceDataJSON) {
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/save-face-data", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+            },
+            body: JSON.stringify({ descriptors: JSON.parse(faceDataJSON) }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error al enviar datos de la cara:", error);
+    }
 }
+
+// Resto del código...
+
 
 
 async function onPlay() {

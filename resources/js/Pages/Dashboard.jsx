@@ -89,13 +89,13 @@ export default function Dashboard({ auth }) {
                         <nav className="mt-6">
                             <div>
                                 <a className="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-500 hover:text-white" href="">
-                                    Inicio
+                                    Home
                                 </a>
                                 <a className="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-500 hover:text-white" href="/users">
-                                    Usuarios JSON
+                                    JSON users
                                 </a>
                                 <a className="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-500 hover:text-white" href="/api/files">
-                                    Archivos JSON
+                                   JSON files
                                 </a>
                             </div>
                         </nav>
@@ -116,7 +116,7 @@ export default function Dashboard({ auth }) {
                                         <div className="ml-4 w-0 flex-1">
                                             <dl>
                                                 <dt className="text-sm font-medium text-gray-500 truncate">
-                                                    Total Usuarios
+                                                    Total Users
                                                 </dt>
                                                 <dd>
                                                     <div className="text-lg font-medium text-gray-900">
@@ -151,7 +151,7 @@ export default function Dashboard({ auth }) {
                                         <div className="ml-4 w-0 flex-1">
                                             <dl>
                                                 <dt className="text-sm font-medium text-gray-500 truncate">
-                                                    Total Archivos
+                                                    Total Archives
                                                 </dt>
                                                 <dd>
                                                     <div className="text-lg font-medium text-gray-900">
