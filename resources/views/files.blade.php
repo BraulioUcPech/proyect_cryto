@@ -382,8 +382,17 @@ function closeModal() {
                                     Any file type; up to 10MB
                                 </p>
                                 <div id="file-upload-filename" class="text-sm text-gray-900"></div>
+
                             </div>
+
                         </div>
+@if (session('success'))
+<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+    <strong class="font-bold">Success!</strong>
+    <span class="block sm:inline">{{ session('success') }}</span>
+</div>
+@endif
+
 
                         <button type="submit"
                             class="mt-4 bg-indigo-600 hover:bg-indigo-400 text-white font-medium py-2 px-4 rounded">

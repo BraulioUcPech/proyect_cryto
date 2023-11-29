@@ -63,6 +63,7 @@ class FileController extends Controller
         $file->save();
 
         return redirect()->back()->with('success', 'Archivo subido y encriptado correctamente.');
+
     }
     public function delete($id)
     {
@@ -93,7 +94,7 @@ class FileController extends Controller
             return view('error', ['message' => 'Usuario no encontrado']);
         }
 
-        $files = $user->files;
+        $files = $user->files()->orderBy('created_at', 'desc')->get();
         $page = ['component' => 'component'];
         return view('files', compact('files', 'page'));
     }
