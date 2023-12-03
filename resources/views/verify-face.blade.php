@@ -95,7 +95,7 @@
 <script type="text/javascript">
 	// Initialize the library first with your application Public ID.
 	// Grab your public ID from the Application Manager on the FACEIO console at: https://console.faceio.net/
-	const faceio = new faceIO("fioa50e2"); // Replace with your application Public ID
+	const faceio = new faceIO("fioa2435"); // Replace with your application Public ID
 
 	function enrollNewUser() {
 		// Start the facial enrollment process
