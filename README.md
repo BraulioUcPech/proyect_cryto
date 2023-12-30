@@ -25,6 +25,12 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 - [Imgur](https://imgur.com/K4qod6f)
 - [Imgur](https://imgur.com/TddbA8K)
 - [Imgur](https://imgur.com/K4qod6f)
+- [Imgur](https://imgur.com/dMcD79M)
+- [Imgur](https://imgur.com/A8hb9nV)
+- [Imgur](https://imgur.com/BYXWG52)
+- [Imgur](https://imgur.com/aBbYk8d)
+- [Imgur](https://imgur.com/xUIoLy9)
+- [Imgur](https://imgur.com/qOLHND2)
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
